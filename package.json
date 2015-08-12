@@ -26,6 +26,9 @@
   },
   "license": "MIT",
   "dependencies": {
+    "bluebird": "^2.9.34",
+    "loggly": "^1.0.8",
+    "mongojs": "^1.2.1",
     "rx": "^2.5.3",
     "rx-node": "^1.0.1"
   },
