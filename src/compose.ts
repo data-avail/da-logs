@@ -25,9 +25,9 @@ export class LoggerCompose implements ILogger {
 
     constructor(opts: ILoggerOpts, composeOpts : ILoggerComposeOpts) {
         this.loggers = [];
-        if (composeOpts.loggly)
+        if (composeOpts.loggly && composeOpts.loggly.token)
             this.loggers.push(new LoggerLoggly(opts, composeOpts.loggly));
-        if (composeOpts.mongo)
+        if (composeOpts.mongo && composeOpts.mongo.connection)
             this.loggers.push(new LoggerMongo(opts, composeOpts.mongo));
         if (composeOpts.console)
             this.loggers.push({write(obj) { console.log("logger>>>", obj); return Promise.resolve(); } });
