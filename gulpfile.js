@@ -8,11 +8,9 @@ var insert = require('gulp-insert');
 var filter = require('gulp-filter');
 
 var tsProject = ts.createProject('tsconfig.json', {sortOutput: true });
-//var tsProjectTsd = ts.createProject('tsconfig.json', { files : ["src/compose.ts"],  sortOutput: true });
 
 var REF_REGEXP = /^\/\/\/\s*<reference\s+path=['"].*['"]\s*\/>\s*$/gm;
 var IMPORT_REGEXP = /^import\s+.*\;$/gm;
-var MODULE_INDEX_REGEXP = /^declare module logs {.*export\s+=.*;$/gm;
 
 gulp.task('build', function() {
     
@@ -26,7 +24,6 @@ gulp.task('build', function() {
         tsResult.dts
         .pipe(replace(REF_REGEXP, ''))
         .pipe(replace(IMPORT_REGEXP, ''))
-        .pipe(replace(MODULE_INDEX_REGEXP, ''))
         .pipe(filter(['*', '!index.d.ts']))
         .pipe(concat('index.d.ts'))
         .pipe(insert.prepend("import Promise = require('bluebird');\n"))
