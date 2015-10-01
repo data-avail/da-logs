@@ -1,4 +1,4 @@
-
+///<reference path="../typings/tsd.d.ts"/>
 var Promise = require("bluebird");
 var loggly = require("./loggly");
 var mongo = require("./mongo");

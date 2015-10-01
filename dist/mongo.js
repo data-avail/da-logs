@@ -1,4 +1,4 @@
-
+///<reference path="../typings/tsd.d.ts"/>
 var Promise = require("bluebird");
 var mongojs = require("mongojs");
 var LoggerMongo = (function () {

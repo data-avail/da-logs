@@ -2,7 +2,7 @@
 
 var loggly = require("loggly");
 import Promise = require("bluebird");
-import types = require("types");
+import types = require("./types");
 
 import ILogger = types.ILogger;
 import ILoggerOpts = types.ILoggerOpts;

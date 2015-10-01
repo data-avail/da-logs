@@ -1,4 +1,4 @@
-
+///<reference path="../typings/tsd.d.ts"/>
 var loggly = require("loggly");
 var Promise = require("bluebird");
 var LoggerLoggly = (function () {
