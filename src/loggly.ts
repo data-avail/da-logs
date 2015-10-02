@@ -1,35 +1,33 @@
 ///<reference path="../typings/tsd.d.ts"/>
+///<reference path="./types.d.ts"/>
 
 var loggly = require("loggly");
-import Promise = require("bluebird");
-import types = require("./types");
-
-import ILogger = types.ILogger;
-import ILoggerOpts = types.ILoggerOpts;
-
-
-export interface ILoggerLogglyOpts  {
+    
+export interface ILoggerLogglyOpts {
     token: string
     subdomain: string
 }
 
-export class LoggerLoggly implements ILogger {
+
+export class LoggerLoggly implements logs.ILogger {
 
     private loggly: any;
 
-    constructor(opts: ILoggerOpts, logglyOpts : ILoggerLogglyOpts) {
+    constructor(opts: logs.ILoggerOpts, logglyOpts: ILoggerLogglyOpts) {
         var tags = [opts.pack.name, opts.pack.ver].concat(opts.tags).filter((f) => !!f);
         var logOpts = {
             token: logglyOpts.token,
             subdomain: logglyOpts.subdomain,
             tags: tags,
-            json:true
+            json: true
         };
         this.loggly = Promise.promisifyAll(loggly.createClient(logOpts));
     }
 
-    write(obj: Object) : Promise<any> {
+    write(obj: Object): Promise<any> {
         return this.loggly.logAsync(obj);
     }
 }
+        
+
 

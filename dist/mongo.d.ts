@@ -1,16 +1,13 @@
 /// <reference path="../typings/tsd.d.ts" />
-import Promise = require("bluebird");
-import types = require("./types");
-import ILogger = types.ILogger;
-import ILoggerOpts = types.ILoggerOpts;
+/// <reference path="../src/types.d.ts" />
 export interface ILoggerMongoOpts {
     connection: string;
     collection: string;
 }
-export declare class LoggerMongo implements ILogger {
+export declare class LoggerMongo implements logs.ILogger {
     private tags;
     private db;
     private insertAsync;
-    constructor(opts: ILoggerOpts, mongoOpts: ILoggerMongoOpts);
+    constructor(opts: logs.ILoggerOpts, mongoOpts: ILoggerMongoOpts);
     write(obj: Object): Promise<any>;
 }

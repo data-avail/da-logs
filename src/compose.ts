@@ -1,42 +1,33 @@
-///<reference path="../typings/tsd.d.ts"/>
-import Promise = require("bluebird");
-import types = require("./types");
-import loggly = require("./loggly");
-import mongo = require("./mongo");
+///<reference path="./types.d.ts"/>
 
+import * as loggly from "./loggly"
+import * as mongo from "./mongo"
 
-import LoggerLoggly = loggly.LoggerLoggly;
-import LoggerMongo = mongo.LoggerMongo;
-import ILoggerLogglyOpts = loggly.ILoggerLogglyOpts;
-import ILoggerMongoOpts = mongo.ILoggerMongoOpts;
-import  ILoggerOpts = types.ILoggerOpts;
-import  ILogger = types.ILogger;
-
- 
 export interface ILoggerComposeOpts {
-    loggly?: ILoggerLogglyOpts
-    mongo?: ILoggerMongoOpts
+    loggly?: loggly.ILoggerLogglyOpts
+    mongo?: mongo.ILoggerMongoOpts
     console?: boolean
 }
 
-export class LoggerCompose implements ILogger {
+export class LoggerCompose implements logs.ILogger {
 
-    private loggers: ILogger[];
+    private loggers: logs.ILogger[];
 
-    constructor(opts: ILoggerOpts, composeOpts : ILoggerComposeOpts) {
+    constructor(opts: logs.ILoggerOpts, composeOpts: ILoggerComposeOpts) {
         this.loggers = [];
         if (composeOpts.loggly && composeOpts.loggly.token)
-            this.loggers.push(new LoggerLoggly(opts, composeOpts.loggly));
+            this.loggers.push(new loggly.LoggerLoggly(opts, composeOpts.loggly));
         if (composeOpts.mongo && composeOpts.mongo.connection)
-            this.loggers.push(new LoggerMongo(opts, composeOpts.mongo));
+            this.loggers.push(new mongo.LoggerMongo(opts, composeOpts.mongo));
         if (composeOpts.console)
-            this.loggers.push({write(obj) { console.log("logger>>>", obj); return Promise.resolve(); } });
+            this.loggers.push({ write(obj) { console.log("logger>>>", obj); return Promise.resolve(); } });
     }
 
-    write(obj: Object) : Promise<any> {
+    write(obj: Object): Promise<any> {
         return Promise.all(this.loggers.map(m => m.write(obj)));
     }
 }
+
 
 
 

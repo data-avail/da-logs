@@ -1,19 +1,13 @@
-/// <reference path="../typings/tsd.d.ts" />
-import Promise = require("bluebird");
-import types = require("./types");
-import loggly = require("./loggly");
-import mongo = require("./mongo");
-import ILoggerLogglyOpts = loggly.ILoggerLogglyOpts;
-import ILoggerMongoOpts = mongo.ILoggerMongoOpts;
-import ILoggerOpts = types.ILoggerOpts;
-import ILogger = types.ILogger;
+/// <reference path="../src/types.d.ts" />
+import * as loggly from "./loggly";
+import * as mongo from "./mongo";
 export interface ILoggerComposeOpts {
-    loggly?: ILoggerLogglyOpts;
-    mongo?: ILoggerMongoOpts;
+    loggly?: loggly.ILoggerLogglyOpts;
+    mongo?: mongo.ILoggerMongoOpts;
     console?: boolean;
 }
-export declare class LoggerCompose implements ILogger {
+export declare class LoggerCompose implements logs.ILogger {
     private loggers;
-    constructor(opts: ILoggerOpts, composeOpts: ILoggerComposeOpts);
+    constructor(opts: logs.ILoggerOpts, composeOpts: ILoggerComposeOpts);
     write(obj: Object): Promise<any>;
 }

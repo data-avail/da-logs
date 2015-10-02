@@ -1,0 +1,19 @@
+///<reference path="../typings/tsd.d.ts"/>
+
+declare module  logs {
+
+
+    export interface ILoggerOpts {
+        pack: {
+            name: string
+            ver: string
+        }
+        tags: string[]
+    }
+    
+    export interface ILogger {
+        write(obj: Object): void
+    }
+    
+
+}

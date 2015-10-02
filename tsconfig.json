@@ -1,17 +1,17 @@
 {
-  "version": "1.5.3",
+  "version": "1.6.0",
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
     "declaration": true,
-    "noImplicitAny": true,
-    "removeComments": false,
+    "noImplicitAny": false,
+    "removeComments": true,
     "noLib": false,
     "emitDecoratorMetadata": false,
-    "outDir": "./dist",
-    "out": ".dist/index.js"
-  },
+    "outDir": "dist",
+    "moduleResolution": "node"
+  },  
   "files" : [  
-    "src/index.ts"
+    "src/compose.ts"
   ]
 }

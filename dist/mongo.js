@@ -1,5 +1,5 @@
 ///<reference path="../typings/tsd.d.ts"/>
-var Promise = require("bluebird");
+///<reference path="./types.d.ts"/>
 var mongojs = require("mongojs");
 var LoggerMongo = (function () {
     function LoggerMongo(opts, mongoOpts) {

@@ -1,6 +1,6 @@
 ///<reference path="../typings/tsd.d.ts"/>
+///<reference path="./types.d.ts"/>
 var loggly = require("loggly");
-var Promise = require("bluebird");
 var LoggerLoggly = (function () {
     function LoggerLoggly(opts, logglyOpts) {
         var tags = [opts.pack.name, opts.pack.ver].concat(opts.tags).filter(function (f) { return !!f; });
