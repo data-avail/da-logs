@@ -1,4 +1,3 @@
-///<reference path="../typings/tsd.d.ts"/>
 ///<reference path="./types.d.ts"/>
 var mongojs = require("mongojs");
 var LoggerMongo = (function () {

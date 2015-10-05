@@ -1,5 +1,4 @@
-///<reference path="./types.d.ts"/>
-
+import * as Promise from "bluebird"
 import * as loggly from "./loggly"
 import * as mongo from "./mongo"
 

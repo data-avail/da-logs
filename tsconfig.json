@@ -12,6 +12,7 @@
     "moduleResolution": "node"
   },  
   "files" : [  
+    "typings/tsd.d.ts",
     "src/compose.ts"
   ]
 }

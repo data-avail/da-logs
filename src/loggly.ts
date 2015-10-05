@@ -1,6 +1,3 @@
-///<reference path="../typings/tsd.d.ts"/>
-///<reference path="./types.d.ts"/>
-
 var loggly = require("loggly");
     
 export interface ILoggerLogglyOpts {

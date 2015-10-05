@@ -1,4 +1,3 @@
-/// <reference path="../typings/tsd.d.ts" />
 /// <reference path="../src/types.d.ts" />
 export interface ILoggerMongoOpts {
     connection: string;

@@ -1,5 +1,3 @@
-///<reference path="../typings/tsd.d.ts"/>
-///<reference path="./types.d.ts"/>
 var loggly = require("loggly");
 var LoggerLoggly = (function () {
     function LoggerLoggly(opts, logglyOpts) {
