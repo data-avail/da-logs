@@ -1,6 +1,7 @@
 import * as Promise from "bluebird"
 import * as loggly from "./loggly"
 import * as mongo from "./mongo"
+import * as types from "./types"
 
 export interface ILoggerComposeOpts {
     loggly?: loggly.ILoggerLogglyOpts
@@ -8,11 +9,11 @@ export interface ILoggerComposeOpts {
     console?: boolean
 }
 
-export class LoggerCompose implements logs.ILogger {
+export class LoggerCompose implements types.ILogger {
 
-    private loggers: logs.ILogger[];
+    private loggers: types.ILogger[];
 
-    constructor(opts: logs.ILoggerOpts, composeOpts: ILoggerComposeOpts) {
+    constructor(opts: types.ILoggerOpts, composeOpts: ILoggerComposeOpts) {
         this.loggers = [];
         if (composeOpts.loggly && composeOpts.loggly.token)
             this.loggers.push(new loggly.LoggerLoggly(opts, composeOpts.loggly));
@@ -26,6 +27,9 @@ export class LoggerCompose implements logs.ILogger {
         return Promise.all(this.loggers.map(m => m.write(obj)));
     }
 }
+
+export type ILogger = types.ILogger; 
+export type ILoggerOpts = types.ILoggerOpts;
 
 
 

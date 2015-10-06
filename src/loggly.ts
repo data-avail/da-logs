@@ -1,3 +1,5 @@
+import * as Promise from "bluebird"
+import * as types from "./types"
 var loggly = require("loggly");
     
 export interface ILoggerLogglyOpts {
@@ -6,11 +8,11 @@ export interface ILoggerLogglyOpts {
 }
 
 
-export class LoggerLoggly implements logs.ILogger {
+export class LoggerLoggly implements types.ILogger {
 
     private loggly: any;
 
-    constructor(opts: logs.ILoggerOpts, logglyOpts: ILoggerLogglyOpts) {
+    constructor(opts: types.ILoggerOpts, logglyOpts: ILoggerLogglyOpts) {
         var tags = [opts.pack.name, opts.pack.ver].concat(opts.tags).filter((f) => !!f);
         var logOpts = {
             token: logglyOpts.token,

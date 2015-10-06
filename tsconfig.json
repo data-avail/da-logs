@@ -13,6 +13,7 @@
   },  
   "files" : [  
     "typings/tsd.d.ts",
+    "typings/types.ts",
     "src/compose.ts"
   ]
 }

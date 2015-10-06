@@ -1,3 +1,4 @@
+var Promise = require("bluebird");
 var loggly = require("loggly");
 var LoggerLoggly = (function () {
     function LoggerLoggly(opts, logglyOpts) {

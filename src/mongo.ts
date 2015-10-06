@@ -1,5 +1,5 @@
-
-///<reference path="./types.d.ts"/>
+import * as types from "./types"
+import * as Promise from "bluebird"
 
 var mongojs = require("mongojs");
 
@@ -8,13 +8,13 @@ export interface ILoggerMongoOpts {
     collection: string
 }
 
-export class LoggerMongo implements logs.ILogger {
+export class LoggerMongo implements types.ILogger {
 
     private tags: string[];
     private db: any;
     private insertAsync: (obj: Object) => Promise<any>;
 
-    constructor(opts: logs.ILoggerOpts, mongoOpts: ILoggerMongoOpts) {
+    constructor(opts: types.ILoggerOpts, mongoOpts: ILoggerMongoOpts) {
         this.tags = [opts.pack.name, opts.pack.ver].concat(opts.tags).filter((f) => !!f);
 
         this.db = mongojs(mongoOpts.connection, [mongoOpts.collection]);
