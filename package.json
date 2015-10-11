@@ -1,6 +1,6 @@
 {
   "name": "da-logs",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "",
   "main" : "dist/compose.js",
   "typings" : "dist/compose.d.ts",
@@ -29,7 +29,7 @@
   "dependencies": {
     "bluebird": "^2.9.34",
     "loggly": "^1.0.8",
-    "mongojs": "^1.2.1"
+    "mongojs": "^1.4.0"
   },
   "devDependencies": {
     "chai": "^3.2.0",
